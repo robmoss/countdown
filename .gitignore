@@ -1,0 +1,6 @@
+bin
+doc/
+*.cmi
+*.cmo
+*.cmx
+*.o

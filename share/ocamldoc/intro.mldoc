@@ -1,0 +1,10 @@
+{2 Overview}
+
+This library implements solvers for both the {!Countdown.Letters} and
+{!Countdown.Numbers} rounds of the classic BBC show
+{{:http://en.wikipedia.org/wiki/Countdown_%28game_show%29}Countdown}.
+It also provides a command-line interface ({!Play}) for playing the games.
+
+{!modules: Countdown CLI Play Test}
+
+{!indexlist}
