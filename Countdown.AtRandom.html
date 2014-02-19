@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Countdown.Dictionary.html">
+<link rel="next" href="Countdown.Letters.html">
+<link rel="Up" href="Countdown.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="CLI" rel="Chapter" href="CLI.html">
+<link title="Countdown" rel="Chapter" href="Countdown.html">
+<link title="Play" rel="Chapter" href="Play.html">
+<link title="Test" rel="Chapter" href="Test.html"><title>Countdown : Countdown.AtRandom</title>
+</head>
+<body>
+<div class="navbar"><a class="pre" href="Countdown.Dictionary.html" title="Countdown.Dictionary">Previous</a>
+&nbsp;<a class="up" href="Countdown.html" title="Countdown">Up</a>
+&nbsp;<a class="post" href="Countdown.Letters.html" title="Countdown.Letters">Next</a>
+</div>
+<h1>Module <a href="type_Countdown.AtRandom.html">Countdown.AtRandom</a></h1>
+
+<pre><span class="keyword">module</span> AtRandom: <code class="code"><span class="keyword">sig</span></code> <a href="Countdown.AtRandom.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
+Random selection of numbers and letters.<br>
+</div>
+<hr width="100%">
+
+<pre><span id="VALpopn_of_freqs"><span class="keyword">val</span> popn_of_freqs</span> : <code class="type">('a * int) list -> 'a list</code></pre><div class="info ">
+Generate a population from a frequency list.<br>
+</div>
+
+<pre><span id="VALchoice"><span class="keyword">val</span> choice</span> : <code class="type">'a list -> 'a * 'a list</code></pre><div class="info ">
+Randomly select an element from a population.
+      Return both the selected value and the remaining population.
+      The pseudo-random number generator (<code class="code"><span class="constructor">Random</span></code>) should be initialised
+      <b>before</b> calling this function.<br>
+</div>
+
+<pre><span id="VALint"><span class="keyword">val</span> int</span> : <code class="type">min:int -> max:int -> int</code></pre><div class="info ">
+Randomly select an integer within the given (inclusive) bounds.
+      The pseudo-random number generator (<code class="code"><span class="constructor">Random</span></code>) should be initialised
+      <b>before</b> calling this function.<br>
+</div>
+</body></html>

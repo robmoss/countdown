@@ -1,0 +1,36 @@
+<html><head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="CLI" rel="Chapter" href="CLI.html">
+<link title="Countdown" rel="Chapter" href="Countdown.html">
+<link title="Play" rel="Chapter" href="Play.html">
+<link title="Test" rel="Chapter" href="Test.html"><title>Countdown : Countdown.Numbers</title>
+</head>
+<body>
+<code class="code"><span class="keyword">sig</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;c&nbsp;=&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;large&nbsp;:&nbsp;int&nbsp;list;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;small&nbsp;:&nbsp;int&nbsp;list;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;per_round&nbsp;:&nbsp;int;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;max_large&nbsp;:&nbsp;int;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;max_small&nbsp;:&nbsp;int;<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;config&nbsp;:&nbsp;<span class="constructor">Countdown</span>.<span class="constructor">Numbers</span>.c<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;init&nbsp;:&nbsp;<span class="constructor">Countdown</span>.<span class="constructor">Numbers</span>.c&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Countdown</span>.<span class="constructor">Numbers</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;remaining&nbsp;:&nbsp;<span class="constructor">Countdown</span>.<span class="constructor">Numbers</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;numbers&nbsp;:&nbsp;<span class="constructor">Countdown</span>.<span class="constructor">Numbers</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int&nbsp;list<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;more_large&nbsp;:&nbsp;<span class="constructor">Countdown</span>.<span class="constructor">Numbers</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;more_small&nbsp;:&nbsp;<span class="constructor">Countdown</span>.<span class="constructor">Numbers</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;target&nbsp;:&nbsp;<span class="constructor">Countdown</span>.<span class="constructor">Numbers</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;add_number&nbsp;:&nbsp;<span class="constructor">Countdown</span>.<span class="constructor">Numbers</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Countdown</span>.<span class="constructor">Numbers</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;add_random_large&nbsp;:&nbsp;<span class="constructor">Countdown</span>.<span class="constructor">Numbers</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int&nbsp;*&nbsp;<span class="constructor">Countdown</span>.<span class="constructor">Numbers</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;add_random_small&nbsp;:&nbsp;<span class="constructor">Countdown</span>.<span class="constructor">Numbers</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int&nbsp;*&nbsp;<span class="constructor">Countdown</span>.<span class="constructor">Numbers</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;set_target&nbsp;:&nbsp;<span class="constructor">Countdown</span>.<span class="constructor">Numbers</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Countdown</span>.<span class="constructor">Numbers</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;solve&nbsp;:&nbsp;<span class="constructor">Countdown</span>.<span class="constructor">Numbers</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int&nbsp;*&nbsp;string<br>
+<span class="keyword">end</span></code></body></html>

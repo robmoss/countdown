@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Play.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="CLI" rel="Chapter" href="CLI.html">
+<link title="Countdown" rel="Chapter" href="Countdown.html">
+<link title="Play" rel="Chapter" href="Play.html">
+<link title="Test" rel="Chapter" href="Test.html"><link title="Type definitions" rel="Section" href="#2_Typedefinitions">
+<link title="Testing routines" rel="Section" href="#2_Testingroutines">
+<link title="Test cases" rel="Section" href="#2_Testcases">
+<title>Countdown : Test</title>
+</head>
+<body>
+<div class="navbar"><a class="pre" href="Play.html" title="Play">Previous</a>
+&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;</div>
+<h1>Module <a href="type_Test.html">Test</a></h1>
+
+<pre><span class="keyword">module</span> Test: <code class="code"><span class="keyword">sig</span></code> <a href="Test.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
+Test cases for the Countdown rounds.<br>
+</div>
+<hr width="100%">
+<br>
+<h2 id="2_Typedefinitions">Type definitions</h2><br>
+
+<pre><code><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt.Letters"><span class="constructor">Letters</span></span> <span class="keyword">of</span> <code class="type">string * string</code></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Characters, solution.</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt.Numbers"><span class="constructor">Numbers</span></span> <span class="keyword">of</span> <code class="type">int list * int * int * string option</code></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Numbers, target, best answer, equation (optional).</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr></table>
+
+<div class="info ">
+Test cases for the Letters and Numbers rounds.<br>
+</div>
+
+<br>
+<h2 id="2_Testingroutines">Testing routines</h2><br>
+
+<pre><span id="VALrun"><span class="keyword">val</span> run</span> : <code class="type">letters:<a href="Countdown.Letters.html#TYPEc">Countdown.Letters.c</a> -><br>       numbers:<a href="Countdown.Numbers.html#TYPEc">Countdown.Numbers.c</a> -> log:bool -> <a href="Test.html#TYPEt">t</a> -> bool</code></pre><div class="info ">
+Test whether a Letters or Numbers round produces the expected solution.<br>
+</div>
+<br>
+<h2 id="2_Testcases">Test cases</h2><br>
+
+<pre><span id="VALsuite"><span class="keyword">val</span> suite</span> : <code class="type"><a href="Test.html#TYPEt">t</a> list</code></pre><div class="info ">
+A suite of test cases for both the Letters and Numbers rounds.<br>
+</div>
+
+<pre><span id="VALrun_suite"><span class="keyword">val</span> run_suite</span> : <code class="type">dict:string -> log:bool -> unit</code></pre><div class="info ">
+Run the suite of test cases.<br>
+</div>
+
+<pre><span id="VALrun_manual"><span class="keyword">val</span> run_manual</span> : <code class="type">dict:string -> unit</code></pre><div class="info ">
+Run manual test cases that prompt the user for input.<br>
+</div>
+</body></html>

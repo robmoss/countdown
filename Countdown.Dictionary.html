@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="next" href="Countdown.AtRandom.html">
+<link rel="Up" href="Countdown.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="CLI" rel="Chapter" href="CLI.html">
+<link title="Countdown" rel="Chapter" href="Countdown.html">
+<link title="Play" rel="Chapter" href="Play.html">
+<link title="Test" rel="Chapter" href="Test.html"><link title="Type definitions" rel="Section" href="#2_Typedefinitions">
+<link title="Initialisation" rel="Section" href="#2_Initialisation">
+<link title="Inspection" rel="Section" href="#2_Inspection">
+<link title="Filtering" rel="Section" href="#2_Filtering">
+<link title="Searching" rel="Section" href="#2_Searching">
+<link title="String conversions" rel="Section" href="#2_Stringconversions">
+<title>Countdown : Countdown.Dictionary</title>
+</head>
+<body>
+<div class="navbar">&nbsp;<a class="up" href="Countdown.html" title="Countdown">Up</a>
+&nbsp;<a class="post" href="Countdown.AtRandom.html" title="Countdown.AtRandom">Next</a>
+</div>
+<h1>Module <a href="type_Countdown.Dictionary.html">Countdown.Dictionary</a></h1>
+
+<pre><span class="keyword">module</span> Dictionary: <code class="code"><span class="keyword">sig</span></code> <a href="Countdown.Dictionary.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
+Dictionaries that support searching for longest words.<br>
+</div>
+<hr width="100%">
+<br>
+<h2 id="2_Typedefinitions">Type definitions</h2><br>
+
+<pre><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> </pre>
+<div class="info ">
+The dictionary type, which encompasses a list of words.<br>
+</div>
+
+<br>
+<h2 id="2_Initialisation">Initialisation</h2><br>
+
+<pre><span id="VALfrom_channel"><span class="keyword">val</span> from_channel</span> : <code class="type">Pervasives.in_channel -> <a href="Countdown.Dictionary.html#TYPEt">t</a></code></pre><div class="info ">
+Load a dictionary from an input channel.<br>
+</div>
+
+<pre><span id="VALfrom_file"><span class="keyword">val</span> from_file</span> : <code class="type">string -> <a href="Countdown.Dictionary.html#TYPEt">t</a></code></pre><div class="info ">
+Load a dictionary from a file.<br>
+</div>
+<br>
+<h2 id="2_Inspection">Inspection</h2><br>
+
+<pre><span id="VALprint"><span class="keyword">val</span> print</span> : <code class="type"><a href="Countdown.Dictionary.html#TYPEt">t</a> -> Pervasives.out_channel -> unit</code></pre><div class="info ">
+Print all words in a dictionary to an output channel.<br>
+</div>
+<br>
+<h2 id="2_Filtering">Filtering</h2><br>
+
+<pre><span id="VALfilter"><span class="keyword">val</span> filter</span> : <code class="type"><a href="Countdown.Dictionary.html#TYPEt">t</a> -> char list -> <a href="Countdown.Dictionary.html#TYPEt">t</a></code></pre><div class="info ">
+Only retain words that can be spelt using the given list of characters
+      (multiple uses of a character are forbidden).<br>
+</div>
+<br>
+<h2 id="2_Searching">Searching</h2><br>
+
+<pre><span id="VALlongest"><span class="keyword">val</span> longest</span> : <code class="type"><a href="Countdown.Dictionary.html#TYPEt">t</a> -> string list</code></pre><div class="info ">
+Return the longest word(s) in the dictionary.<br>
+</div>
+
+<pre><span id="VALfind_longest"><span class="keyword">val</span> find_longest</span> : <code class="type"><a href="Countdown.Dictionary.html#TYPEt">t</a> -> char list -> string list</code></pre><div class="info ">
+Return the longest word(s) in the dictionary that are spelt using only
+      the given list of characters (multiple uses are forbidden).<br>
+</div>
+<br>
+<h2 id="2_Stringconversions">String conversions</h2><br>
+
+<pre><span id="VALexplode"><span class="keyword">val</span> explode</span> : <code class="type">string -> char list</code></pre><div class="info ">
+Convert a string to a list of characters.<br>
+</div>
+
+<pre><span id="VALimplode"><span class="keyword">val</span> implode</span> : <code class="type">char list -> string</code></pre><div class="info ">
+Convert a list of characters to a string.<br>
+</div>
+</body></html>

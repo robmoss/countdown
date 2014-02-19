@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Countdown.html">
+<link rel="next" href="Test.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="CLI" rel="Chapter" href="CLI.html">
+<link title="Countdown" rel="Chapter" href="Countdown.html">
+<link title="Play" rel="Chapter" href="Play.html">
+<link title="Test" rel="Chapter" href="Test.html"><link title="Type definitions" rel="Section" href="#2_Typedefinitions">
+<link title="Options" rel="Section" href="#2_Options">
+<link title="Playing" rel="Section" href="#2_Playing">
+<link title="Entry-point" rel="Section" href="#2_Entrypoint">
+<title>Countdown : Play</title>
+</head>
+<body>
+<div class="navbar"><a class="pre" href="Countdown.html" title="Countdown">Previous</a>
+&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;<a class="post" href="Test.html" title="Test">Next</a>
+</div>
+<h1>Module <a href="type_Play.html">Play</a></h1>
+
+<pre><span class="keyword">module</span> Play: <code class="code"><span class="keyword">sig</span></code> <a href="Play.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
+Play Countdown rounds interactively.<br>
+</div>
+<hr width="100%">
+<br>
+<h2 id="2_Typedefinitions">Type definitions</h2><br>
+
+<pre><code><span id="TYPEoptions"><span class="keyword">type</span> <code class="type"></code>options</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELToptions.dict">dict</span>&nbsp;: <code class="type">string</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >The filename of the word list.</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELToptions.timer">timer</span>&nbsp;: <code class="type">bool</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Whether to use a timer for each round.</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELToptions.delay">delay</span>&nbsp;: <code class="type">int</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >The number of seconds allocated for a single round.</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELToptions.test">test</span>&nbsp;: <code class="type">bool</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Whether to run test cases.</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELToptions.manual">manual</span>&nbsp;: <code class="type">bool</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Whether to run test cases that prompt the user for input.</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr></table>
+}
+
+<div class="info ">
+Command-line options.<br>
+</div>
+
+<br>
+<h2 id="2_Options">Options</h2><br>
+
+<pre><span id="VALdefault_options"><span class="keyword">val</span> default_options</span> : <code class="type">unit -> <a href="Play.html#TYPEoptions">options</a></code></pre><div class="info ">
+The default command-line options.<br>
+</div>
+
+<pre><span id="VALtimer_of_opts"><span class="keyword">val</span> timer_of_opts</span> : <code class="type"><a href="Play.html#TYPEoptions">options</a> -> int option</code></pre><div class="info ">
+Determine the appropriate game timer given the command-line options.<br>
+</div>
+<br>
+<h2 id="2_Playing">Playing</h2><br>
+
+<pre><span id="VALplay_letters"><span class="keyword">val</span> play_letters</span> : <code class="type"><a href="Play.html#TYPEoptions">options</a> -> <a href="Countdown.Letters.html#TYPEc">Countdown.Letters.c</a> -> unit</code></pre><div class="info ">
+Play a single Letters round.<br>
+</div>
+
+<pre><span id="VALplay_numbers"><span class="keyword">val</span> play_numbers</span> : <code class="type"><a href="Play.html#TYPEoptions">options</a> -> <a href="Countdown.Numbers.html#TYPEc">Countdown.Numbers.c</a> -> unit</code></pre><div class="info ">
+Play a single Numbers round.<br>
+</div>
+
+<pre><span id="VALplay_game"><span class="keyword">val</span> play_game</span> : <code class="type"><a href="Play.html#TYPEoptions">options</a> -> unit</code></pre><div class="info ">
+Play any number of rounds of either game.<br>
+</div>
+<br>
+<h2 id="2_Entrypoint">Entry-point</h2><br>
+
+<pre><span id="VALmain"><span class="keyword">val</span> main</span> : <code class="type">unit -> unit</code></pre><div class="info ">
+Parse the command-line options and either run test cases or allow the user
+    to play any number of Countdown rounds (via <a href="Play.html#VALplay_game"><code class="code"><span class="constructor">Play</span>.play_game</code></a>).
+    This function also initialises the pseudo-random number generator
+    (<code class="code"><span class="constructor">Random</span>.self_init ()</code>).<br>
+</div>
+</body></html>
