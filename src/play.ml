@@ -87,6 +87,7 @@ let play_game opts =
     ([Random.self_init ()]). *)
 let main () =
   let opts = ref (default_options ()) in
+  let ptn = ref "" in
   let argspec = [
     "--dict", Arg.String (fun s -> opts := { !opts with dict = s; }),
       " Location of the word list";
@@ -98,9 +99,20 @@ let main () =
       " Run test cases";
     "--manual", Arg.Unit (fun () -> opts := { !opts with manual = true; }),
       " Run manual test cases (requires --test)\n";
+    "--match", Arg.String (fun s -> ptn := s),
+      " Print words that match the given pattern\n";
   ] in
+  (*
   Arg.parse (Arg.align argspec) (fun _ -> ())
     "\nUSAGE: play [--dict FILE --timer --delay SECS --test --manual]\n";
+   *)
+  let usage_str = String.concat "\n" [
+    "";
+    "USAGE: play [--dict FILE --timer --delay SECS --test --manual]";
+    "       play [--dict FILE --match PATTERN]";
+    "";
+  ] in
+  Arg.parse (Arg.align argspec) (fun _ -> ()) usage_str;
 
   Random.self_init ();
   if !opts.test then (
@@ -109,7 +121,13 @@ let main () =
     else
       Test.run_suite ~dict:!opts.dict ~log:true
   ) else (
-    play_game !opts
+    if !ptn = "" then
+      play_game !opts
+    else
+      let dict = Countdown.Dictionary.from_file !opts.dict
+      and chars = Countdown.Dictionary.explode !ptn in
+      let words = Countdown.Dictionary.match_pattern dict chars in
+      List.iter (fun s -> Printf.printf "%s\n" s) words
   );;
 
 main ();
