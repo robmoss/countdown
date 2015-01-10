@@ -208,6 +208,32 @@ module Dictionary = struct
   let find_longest dict chars =
     longest (filter dict chars)
 
+  (** Return the word(s) in the dictionary that match the given pattern, where
+      each character is either a specific letter ('a'..'z') or unknown ('?'). *)
+  let match_pattern dict chars =
+    let is_match char (_, node) =
+      char == '?' || node.ch == char
+    and children char (substr, node) =
+      List.map (fun n -> (node.ch::substr, n)) node.children
+    in
+    let rec step_down partials ch rest =
+      (* Determine which nodes match the current character in the pattern. *)
+      let partials = List.filter (is_match ch) partials in
+      match rest with
+      | [] ->
+         (* This was the last character, return all matching strings that are
+            identified as being whole words. *)
+         let words = List.filter (fun (_, n) -> n.word) partials in
+         List.map (fun (substr, n) -> implode (List.rev (n.ch::substr))) words
+      | r::rs ->
+         (* There are subsequent characters to match against the children of
+            every matching node. *)
+         let partials = List.flatten (List.map (children ch) partials) in
+         step_down partials r rs
+    in
+    match chars with
+    | [] -> [] (* No words of length zero! *)
+    | c::cs -> step_down (List.map (fun n -> ([], n)) dict) c cs
 end
 
 (** Random selection of numbers and letters. *)

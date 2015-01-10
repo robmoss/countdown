@@ -41,6 +41,10 @@ module Dictionary : sig
       the given list of characters (multiple uses are forbidden). *)
   val find_longest : t -> char list -> string list
 
+  (** Return the word(s) in the dictionary that match the given pattern, where
+      each character is either a specific letter ('a'..'z') or unknown ('?'). *)
+  val match_pattern : t -> char list -> string list
+
   (** {2 String conversions} *)
 
   (** Convert a string to a list of characters. *)
