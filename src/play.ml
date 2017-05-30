@@ -88,6 +88,7 @@ let play_game opts =
 let main () =
   let opts = ref (default_options ()) in
   let ptn = ref "" in
+  let ltrs = ref None in
   let argspec = [
     "--dict", Arg.String (fun s -> opts := { !opts with dict = s; }),
       " Location of the word list";
@@ -100,7 +101,9 @@ let main () =
     "--manual", Arg.Unit (fun () -> opts := { !opts with manual = true; }),
       " Run manual test cases (requires --test)\n";
     "--match", Arg.String (fun s -> ptn := s),
-      " Print words that match the given pattern\n";
+      " Print words that match the given pattern";
+    "--using", Arg.String (fun s -> ltrs := Some s),
+      " Use these letters to fill the blanks in the pattern\n";
   ] in
   (*
   Arg.parse (Arg.align argspec) (fun _ -> ())
@@ -109,7 +112,7 @@ let main () =
   let usage_str = String.concat "\n" [
     "";
     "USAGE: play [--dict FILE --timer --delay SECS --test --manual]";
-    "       play [--dict FILE --match PATTERN]";
+    "       play [--dict FILE --match PATTERN --using LETTERS]";
     "";
   ] in
   Arg.parse (Arg.align argspec) (fun _ -> ()) usage_str;
@@ -126,7 +129,12 @@ let main () =
     else
       let dict = Countdown.Dictionary.from_file !opts.dict
       and chars = Countdown.Dictionary.explode !ptn in
-      let words = Countdown.Dictionary.match_pattern dict chars in
+      let using =
+        match !ltrs with
+        | Some s -> Some (Countdown.Dictionary.explode s)
+        | None -> None
+      in
+      let words = Countdown.Dictionary.match_pattern dict chars ?using () in
       List.iter (fun s -> Printf.printf "%s\n" s) words
   );;
 

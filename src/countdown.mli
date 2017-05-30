@@ -43,7 +43,7 @@ module Dictionary : sig
 
   (** Return the word(s) in the dictionary that match the given pattern, where
       each character is either a specific letter ('a'..'z') or unknown ('?'). *)
-  val match_pattern : t -> char list -> string list
+  val match_pattern : t -> char list -> ?using:char list -> unit -> string list
 
   (** {2 String conversions} *)
 

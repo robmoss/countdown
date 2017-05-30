@@ -210,21 +210,59 @@ module Dictionary = struct
 
   (** Return the word(s) in the dictionary that match the given pattern, where
       each character is either a specific letter ('a'..'z') or unknown ('?'). *)
-  let match_pattern dict chars =
-    let is_match char (_, node) =
-      char == '?' || node.ch == char
-    and children char (substr, node) =
-      List.map (fun n -> (node.ch::substr, n)) node.children
+  let match_pattern dict chars ?using () =
+    (** Determine whether a node matches a blank, given a list of letters that
+        can be used to match a blank. *)
+    let consume_letter substr node letters =
+      let rec find_letter ls accum =
+        match ls with
+        | [] -> (false, (substr, node, Some letters))
+        | l::ls ->
+          if l == node.ch then
+            (true, (node.ch::substr, node, Some (accum @ ls)))
+          else
+            find_letter ls (l::accum)
+      in
+      find_letter letters []
+    in
+    (** Determine if this node matches the current character.
+        It returns a tuple (match, (substr, node, letters)), where match is a
+        boolean than indicates whether the node is a match, substr is the
+        string that has been built so far *including this node*, and letters
+        is the list of remaining letters (if any) that can match a blank. *)
+    let is_match char (substr, node, ls) =
+      match ls with
+      | None ->
+        (* Any letter can match a blank. *)
+        if char == '?' || node.ch == char then
+          (true, (node.ch::substr, node, ls))
+        else
+          (false, (substr, node, ls))
+      | Some letters ->
+        (* Only specific letters can match a blank. *)
+        if node.ch == char then
+          (true, (node.ch::substr, node, ls))
+        else if char == '?' then
+          (* Check if the node matches one of these letters and, if so,
+             remove this letter from the list. *)
+          consume_letter substr node letters
+        else
+          (false, (substr, node, ls))
+    and children char (substr, node, ls) =
+      List.map (fun n -> (substr, n, ls)) node.children
     in
     let rec step_down partials ch rest =
       (* Determine which nodes match the current character in the pattern. *)
-      let partials = List.filter (is_match ch) partials in
+      let partials = List.map (is_match ch) partials in
+      (* Discard non-matching nodes. *)
+      let partials = List.filter (fun (bool, _p) -> bool) partials in
+      let partials = List.map (fun (_bool, p) -> p) partials in
       match rest with
       | [] ->
          (* This was the last character, return all matching strings that are
             identified as being whole words. *)
-         let words = List.filter (fun (_, n) -> n.word) partials in
-         List.map (fun (substr, n) -> implode (List.rev (n.ch::substr))) words
+         let words = List.filter (fun (_, n, _ls) -> n.word) partials in
+         List.map (fun (substr, n, _ls) -> implode (List.rev (substr))) words
       | r::rs ->
          (* There are subsequent characters to match against the children of
             every matching node. *)
@@ -233,7 +271,7 @@ module Dictionary = struct
     in
     match chars with
     | [] -> [] (* No words of length zero! *)
-    | c::cs -> step_down (List.map (fun n -> ([], n)) dict) c cs
+    | c::cs -> step_down (List.map (fun n -> ([], n, using)) dict) c cs
 end
 
 (** Random selection of numbers and letters. *)
