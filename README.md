@@ -10,8 +10,7 @@ This work is made available under the BSD 3-Clause license (see `LICENSE`).
 
 ## Requirements
 
-This library requires OCaml 3.12 and a recent version of Findlib.
-It has been tested with OCaml 4.01.1 and Findlib 1.4.
+This library requires OCaml >= 4.02 and a recent version of Findlib.
 
 The OCaml compilers and Findlib can be installed using your system package
 manager, using [OPAM](http://opam.ocaml.org/), using a platform-specific

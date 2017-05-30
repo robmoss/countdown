@@ -19,7 +19,7 @@ ifeq ($(DEBUG), false)
 else
     OCC = ocamlc -g
 endif
-OCC_FLAGS = -thread -linkpkg -I $(SRC_DIR)
+OCC_FLAGS := -thread -linkpkg -I $(SRC_DIR) -safe-string
 
 #
 # The remaining variables are derived from the preceding definitions

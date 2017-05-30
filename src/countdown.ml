@@ -37,11 +37,11 @@ module Dictionary = struct
 
   (** Convert a list of characters to a string. *)
   let implode l =
-    let res = String.create (List.length l) in
+    let res = Bytes.create (List.length l) in
     let rec imp i = function
       | [] -> res
-      | c :: l -> res.[i] <- c; imp (i + 1) l in
-    imp 0 l
+      | c :: l -> Bytes.set res i c; imp (i + 1) l in
+    Bytes.to_string (imp 0 l)
 
   (** {2 Initialisation} *)
 
